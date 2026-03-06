@@ -50,10 +50,10 @@ class _LoginScreenState extends State<LoginScreen> {
       ),
     );
 
-    final imgLoading = Positioned(
-      top: 100,
-      child: Image.asset('assets/loading.json')
-    );
+    final imgLoading = isLoading ? (Positioned(
+      top: 10,
+      child: Image.asset('assets/loading.json', height: 200,)
+    )) : Container();
     
     return Scaffold(
       body: Container(
@@ -106,6 +106,7 @@ class _LoginScreenState extends State<LoginScreen> {
               bottom: 20,
               child: btnLogin,
             ),
+            imgLoading
           ],
         ),
       ),
