@@ -3,13 +3,12 @@ import 'package:lottie/lottie.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
-  
+
   @override
   State<LoginScreen> createState() => _LoginScreenState();
 }
 
 class _LoginScreenState extends State<LoginScreen> {
-
   bool isLoading = false;
 
   @override
@@ -21,7 +20,7 @@ class _LoginScreenState extends State<LoginScreen> {
         fillColor: Colors.white,
       ),
     );
-    
+
     final txtPwd = TextFormField(
       obscureText: true,
       decoration: const InputDecoration(
@@ -30,31 +29,34 @@ class _LoginScreenState extends State<LoginScreen> {
         fillColor: Colors.white,
       ),
     );
-    
-    final btnLogin = Positioned(
-      bottom: 10,
 
-      child: InkWell(
-        onTap: (){
-
-          Future.delayed(Duration(milliseconds: 3000)).then((value) {
+    final btnLogin = InkWell(
+      onTap: () {
+        setState(() {
+          isLoading = true;
+        });
+        Future.delayed(const Duration(milliseconds: 3000)).then((_) {
+          if (mounted) {
             Navigator.pushNamed(context, "/dashboard");
-          });
-
-        },
-        child: Lottie.asset(
-          'assets/getstarted.json',
-          height: 100,
-          fit: BoxFit.contain,
-        ),
+            setState(() {
+              isLoading = false; 
+            });
+          }
+        });
+      },
+      child: Lottie.asset(
+        'assets/getstarted.json',
+        height: 100,
+        fit: BoxFit.contain,
       ),
     );
 
-    final imgLoading = isLoading ? (Positioned(
-      top: 10,
-      child: Image.asset('assets/loading.json', height: 200,)
-    )) : Container();
-    
+    final imgLoading = isLoading
+        ? Positioned(
+            child: Lottie.asset('assets/loading.json', height: 200),
+          )
+        : const SizedBox.shrink(); // FIX: SizedBox.shrink() es más eficiente que Container()
+
     return Scaffold(
       body: Container(
         height: MediaQuery.of(context).size.height,
@@ -68,11 +70,11 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            Positioned(
+            const Positioned(
               top: 200,
               child: SizedBox(
                 width: 300,
-                child: const Text(
+                child: Text(
                   "Amongus",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -84,7 +86,7 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Positioned(
-              bottom: 140, 
+              bottom: 140,
               child: Container(
                 width: 400,
                 padding: const EdgeInsets.all(20),
@@ -103,10 +105,10 @@ class _LoginScreenState extends State<LoginScreen> {
               ),
             ),
             Positioned(
-              bottom: 20,
-              child: btnLogin,
+              bottom: 10,
+              child: btnLogin, // FIX: el Positioned está aquí, no duplicado dentro
             ),
-            imgLoading
+            imgLoading,
           ],
         ),
       ),
