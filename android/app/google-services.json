@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "836701596999",
+    "project_id": "dmsn2026-junior",
+    "storage_bucket": "dmsn2026-junior.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:836701596999:android:7a3efbff174e27a9d47062",
+        "android_client_info": {
+          "package_name": "com.example.dmsn2026"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCPecAM5leqpG_RJBsB_raSLJ-YVK432Z8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

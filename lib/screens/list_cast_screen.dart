@@ -64,14 +64,32 @@ class _ListCastScreenState extends State<ListCastScreen> {
                 return ListView.builder(
                   itemCount: list.length,
                   itemBuilder: (context, index) {
-                    final cast = list[index];
-                    return ListTile(
-                      leading: const Icon(Icons.person),
-                      title: Text(cast.nameCast ?? "Sin nombre"),
-                      subtitle: Text(
-                        "Nacimiento: ${cast.bitrhCast ?? '-'} | Género: ${cast.genderCast ?? '-'}",
+                  final cast = list[index];
+                  return ListTile(
+                    leading: const Icon(Icons.person),
+                    title: Text(cast.nameCast ?? "Sin nombre"),
+                    subtitle: Text(
+                    "Nacimiento: ${cast.bitrhCast ?? '-'} | Género: ${cast.genderCast ?? '-'}",
+                    ),
+                    trailing: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Container(
+                      width: 50,
+                      height: 50,
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.image),
                       ),
-                    );
+                      const SizedBox(width: 8),
+                      Container(
+                      width: 50,
+                      height: 50,
+                      color: Colors.grey[300],
+                      child: const Icon(Icons.image),
+                      ),
+                    ],
+                    ),
+                  );
                   },
                 );
               }

@@ -18,6 +18,9 @@ dependencies:
   path_provider: ^2.1.5
   path: ^1.9.0   # FIX: dependencia requerida por castdb.dart para usar join()
   intl: ^0.20.2  
+  firebase_core: ^4.5.0
+  firebase_auth: ^6.2.0
+  cloud_firestore: ^6.1.3
 
 dev_dependencies:
   flutter_test:
